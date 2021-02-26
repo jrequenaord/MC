@@ -4,6 +4,7 @@ When the user inputs the data, an email which contains the report is sent to the
 
 In order to reduce the cost of hosting the cloud instance, it was decided to not use a static IP. For this reason, each morning the user is notified with the new IP where the API is available. This feature will be changed in future iterations.
 
+![alt text](https://github.com/jrequenaord/MC/blob/main/MC-Images/MC_v0.%201.jpeg)
 
 Next steps:
 - To grant a static IP to the instance hosting the API.
