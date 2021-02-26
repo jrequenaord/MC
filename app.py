@@ -52,6 +52,10 @@ def saveRefreshToken(token):
     with open("/home/ec2-user/CM-APP/config.yml", "w") as ymlfile:
         yaml.dump(cfg, ymlfile)
 
+class StrictDict(dict):
+    def __setitem__(self, key, value):
+        if key in self:
+            dict.__setitem__(self, key, value)
 
 
 def writeExcel(myData):
@@ -98,8 +102,8 @@ def writeExcel(myData):
         incrementalDays += 1
 
     # To add weight on the Excel.
-    weightDates = getWeight(datesRange)
-
+    stricDateRange = StrictDict(datesRange)
+    weightDates = getWeight(stricDateRange)
     row = 1
     column = 5
     for weight in weightDates.values():
