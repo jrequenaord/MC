@@ -159,10 +159,14 @@ def meanWeight(initialDate,totalDays):
 
     weights = []
     for x in range(firstValue, lastValue+1):
-        weights.append(ws.cell(x,6).value)
+        if ws.cell(x,6).value != None:
+          weights.append(ws.cell(x,6).value)
     ws.merge_cells(start_row=firstValue, start_column=7, end_row=lastValue, end_column=7)
-    ws.cell(firstValue,7).value = sum(weights)/len(weights)
-    ws.cell(firstValue,7).alignment = Alignment(vertical='center')
+    try:
+      ws.cell(firstValue,7).value = sum(weights)/len(weights)
+      ws.cell(firstValue,7).alignment = Alignment(vertical='center')
+    except:
+      ws.cell(firstValue,7).value = "Unknown"
     wb.save("MC_Report.xlsx")
 
 def createChart(initialDate, totalDays):
